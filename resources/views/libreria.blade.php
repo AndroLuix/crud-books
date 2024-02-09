@@ -2,12 +2,12 @@
 <link rel="stylesheet" href="{{ asset('css/libreria-form.css') }}">
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row justify-content-center align-items-center"> 
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header btn btn-success" id="show-form">Inserisci un libro</div>
 
-                    <div class="card-body" id="openForm" style="display: none;">
+                    <div class="card-body " id="openForm" style="display: none;">
                         <!-- Modificato per nascondere il form all'inizio -->
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -36,16 +36,16 @@
                             </div>
                         @endif
 
-                        <div class="text-center d-flex align-items-start flex-wrap" style="margin-right: 0; margin-left: 0;">
+                        <div class="text-center d-flex align-items-start flex-wrap" style="margin-right: 0; margin-left: 0; padding:20px;">
                             @foreach ($books as $book)
-                                <div class="col-md-4 m-2">
+                                <div class="col-md-2 m-2 p-2">
                                     <div class="card mb-4">
                                         <img src="{{ asset('img/' . $book->img) }}"  class="card-img-top"
                                             alt="{{ $book->nome }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $book->nome }}</h5>
                                             <p class="card-text">Autore: {{ $book->autore }}</p>
-                                            <p> <a class="btn btn-danger" href="/elimina/{{$book->id}}">Elimina</a> <a class="btn btn-secondary" href="/modifica/{{$book->id}}"> Modifica </a></p>
+                                            <p> <a class="btn btn-danger m-2" href="/elimina/{{$book->id}}">Elimina</a> <a class="btn btn-secondary m-2" href="/modifica/{{$book->id}}"> Modifica </a></p>
                                         </div>
                                     </div>
                                 </div>

@@ -58,13 +58,38 @@ class BookController extends Controller
         return view('modifica', compact('book'));
     }
 
-    public function update(){
-        
+    public function update(Request $request){
+        $request->validate([
+            'id' => 'required|exists:books,id',
+            'nome' => 'required|string|max:255',
+            'autore' => 'required|string|max:255',
+            'img' => 'image|max:2048', // Limitiamo la dimensione dell'immagine a 2MB
+        ]);
+
+        // Trova il libro da aggiornare
+        $book = Book::findOrFail($request->id);
+
+        // Aggiorna i dati del libro con i nuovi valori
+        $book->nome = $request->input('nome');
+        $book->autore = $request->input('autore');
+
+        // Se è stata fornita una nuova immagine, la salva
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $book->img = $imageName;
+        }
+
+        // Salva il libro aggiornato
+        $book->save();
+
+        return redirect('libreria')->with('success', 'Libro aggiornato con successo');
     }
 
 
     public function delete($id){
-        Book::where($id)->fid();
+        Book::where('id', $id)->delete();
 
         return redirect('libreria')->with('success','Libro Eliminato con Successo!');
 

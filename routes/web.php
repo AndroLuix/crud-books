@@ -32,6 +32,6 @@ Route::get('/modifica/{id}',[BookController::class,'modifica']);
 Route::post('update',[BookController::class,'update']);
 
 //elimina librio
-Route::post('/elimina/{id}',[BookController::class,'delete']);
+Route::get('/elimina/{id}',[BookController::class,'delete']);
 
 Route::post('/create',[BookController::class,'create']);
