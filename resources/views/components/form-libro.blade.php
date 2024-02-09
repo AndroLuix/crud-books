@@ -1,20 +1,20 @@
 <form class="requires-validation" id="registra-libro" method="POST"
-action="/registra" novalidate>
-
+action="/create" enctype="multipart/form-data" >
+@csrf
 <div class="col-md-12">
-    <input class="form-control" type="text" name="name"
+    <input class="form-control" type="text" name="nome"
         placeholder="Nome del Libro" required>
 
 </div>
 
 <div class="col-md-12">
-    <input class="form-control" type="text" name="email"
+    <input class="form-control" type="text" name="autore"
         placeholder="Autore" required>
 </div>
 
 <div class="col-md-12">
-    <input class="form-control" type="file" accept="image/*" name="email"
-        placeholder="Immagine" required>
+    <input class="form-control" type="file" accept="image/*" name="img"
+        placeholder="Immagine" >
 </div>
 
 
