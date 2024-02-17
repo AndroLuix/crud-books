@@ -14,9 +14,16 @@ Composer
 NodeJs
 
 ## inizializzazione 
+
+
+ modifica il file .ena.example rinominandolo semplicemente '.env'
+
+ Crea un database chiamato libreria. 
+
+
  vai su terminale e scrivi 'composer install' e 'composer update'
  'npm install' , 'npm run dev'
- 'php artisan migrate', 'php artisan serve'
+ 'php artisan migrate', 'php artisan serve
 
  
 ## About Laravel
